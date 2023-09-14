@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:grocery_flutter_app/provider/dark_theme_provider.dart';
 import 'package:grocery_flutter_app/sevices/utils.dart';
 import 'package:grocery_flutter_app/widget/on_sale_widget.dart';
@@ -47,26 +48,54 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white, activeColor: Colors.red)),
             ),
           ),
-          const SizedBox(height: 6,),
+          const SizedBox(
+            height: 6,
+          ),
           TextButton(
             onPressed: () {},
-            child: TextWidget(
+            child: const TextWidget(
               text: "View All",
               maxLines: 1,
               color: Colors.blue,
               fontSize: 20,
             ),
           ),
-          const SizedBox(height: 6,),
-          SizedBox(
-            height: screenSize.height * 0.24,
-            child: ListView.builder(
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context,index){
-
-                  return OnSaleWidget();
-            }),
+          const SizedBox(
+            height: 6,
+          ),
+          Row(
+            children: [
+              RotatedBox(
+                quarterTurns: -1,
+                child: Row(
+                  children: [
+                    TextWidget(
+                      text: "On sale".toUpperCase(),
+                      color: Colors.red,
+                      fontSize: 22,
+                      isTitle: true,
+                    ),
+                    SizedBox(width: 5,),
+                    Icon(
+                      IconlyLight.discount,
+                      color: Colors.red,
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(width: 8,),
+              Flexible(
+                child: SizedBox(
+                  height: screenSize.height * 0.24,
+                  child: ListView.builder(
+                      itemCount: 10,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return OnSaleWidget();
+                      }),
+                ),
+              ),
+            ],
           )
         ],
       ),
