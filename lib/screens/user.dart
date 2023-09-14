@@ -109,7 +109,9 @@ class _UserScreenState extends State<UserScreen> {
                   title: "Logout",
                   iconData: IconlyLight.logout,
                   color: color,
-                  onPressed: () {}),
+                  onPressed: () {
+                    _showLogoutDialog();
+                  }),
             ],
           ),
         ),
@@ -117,26 +119,69 @@ class _UserScreenState extends State<UserScreen> {
     ));
   }
 
-  Future<void> _showAddressDialog() async{
+  Future<void> _showLogoutDialog() async {
     await showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text("Update"),
-        content: TextField(
-          controller: _addressTextController,
-          onChanged: (value){
-            // _addressTextController.text = value;
-          },
-          maxLines: 5,
-          decoration:
-          const InputDecoration(hintText: "Your address"),
-        ),
-        actions: [
-          TextButton(onPressed: (){}, child: const Text("Update"))
-        ],
-      );
-    });
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Row(
+              children: [
+                Image.asset(
+                  'assets/images/warning-sign.png',
+                  height: 20,
+                  width: 20,
+                  fit: BoxFit.fill,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text("Sign out")
+              ],
+            ),
+            content: const Text("Do you want to sign out?"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: TextWidget(
+                    color: Colors.cyan,
+                    text: "Cancel",
+                    fontSize: 18,
+                  )),
+              TextButton(
+                  onPressed: () {},
+                  child: TextWidget(
+                    color: Colors.red,
+                    text: "OK",
+                    fontSize: 18,
+                  ))
+            ],
+          );
+        });
+  }
+
+  Future<void> _showAddressDialog() async {
+    await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Update"),
+            content: TextField(
+              controller: _addressTextController,
+              onChanged: (value) {
+                // _addressTextController.text = value;
+              },
+              maxLines: 5,
+              decoration: const InputDecoration(hintText: "Your address"),
+            ),
+            actions: [
+              TextButton(onPressed: () {}, child: const Text("Update"))
+            ],
+          );
+        });
   }
 
   Widget _listTiles(
@@ -159,7 +204,7 @@ class _UserScreenState extends State<UserScreen> {
       ),
       leading: Icon(iconData),
       trailing: const Icon(IconlyLight.arrowRight2),
-      onTap: (){
+      onTap: () {
         onPressed();
       },
     );
