@@ -1,6 +1,8 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:grocery_flutter_app/sevices/utils.dart';
+import 'package:grocery_flutter_app/widget/heat_button.dart';
 import 'package:grocery_flutter_app/widget/price_widget.dart';
 import 'package:grocery_flutter_app/widget/text_widget.dart';
 
@@ -34,11 +36,14 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      'https://cdn.britannica.com/24/174524-050-A851D3F2/Oranges.jpg',
+                    FancyShimmerImage(
+                      imageUrl:
+                          'https://cdn.britannica.com/24/174524-050-A851D3F2/Oranges.jpg',
                       height: size.width * 0.22,
-                      fit: BoxFit.fill,
+                      width: size.width * 0.22,
+                      boxFit: BoxFit.fill,
                     ),
+
                     Column(
                       children: [
                         TextWidget(
@@ -47,8 +52,6 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                           fontSize: 22,
                           isTitle: true,
                         ),
-
-
                         SizedBox(
                           height: 6,
                         ),
@@ -62,16 +65,7 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                                 color: color,
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                print('Heart button is pressed');
-                              },
-                              child: Icon(
-                                IconlyLight.heart,
-                                size: 22,
-                                color: color,
-                              ),
-                            )
+                      HeartButton()
                           ],
                         )
                       ],
