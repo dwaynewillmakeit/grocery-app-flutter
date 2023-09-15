@@ -45,9 +45,9 @@ class _FeedsWidgetState extends State<FeedsWidget> {
             children: [
               FancyShimmerImage(
                 imageUrl:
-                    'https://cdn.britannica.com/24/174524-050-A851D3F2/Oranges.jpg',
-                height: size.width * 0.1,
-                width: size.width * 0.2,
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUncCydoU454cQR5avJTqyn72yZRJ1CzPVxg&usqp=CAU',
+                height: size.width * 0.2,
+                width: size.width * 0.3,
                 boxFit: BoxFit.fill,
               ),
               Padding(

@@ -1,6 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:grocery_flutter_app/inner_screen/feed_screen.dart';
 import 'package:grocery_flutter_app/inner_screen/on_sale_screen.dart';
 import 'package:grocery_flutter_app/sevices/global_methods.dart';
 import 'package:grocery_flutter_app/sevices/utils.dart';
@@ -30,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final Color color = Utils(context).color;
 
     Size screenSize = utils.getScreenSize;
-
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -125,7 +125,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     isTitle: true,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GlobalMethods.navigateTo(
+                          context: context, routeName: FeedScreen.routeName);
+                    },
                     child: const TextWidget(
                       text: "Browse All",
                       maxLines: 1,
