@@ -3,26 +3,42 @@ import 'package:grocery_flutter_app/sevices/utils.dart';
 import 'package:grocery_flutter_app/widget/text_widget.dart';
 
 class PriceWidget extends StatelessWidget {
-  const PriceWidget({super.key});
+  const PriceWidget(
+      {super.key,
+      required this.salePrice,
+      required this.price,
+      required this.textPrice,
+      required this.isOnSale});
+
+  final double salePrice, price;
+  final String textPrice;
+  final bool isOnSale;
 
   @override
   Widget build(BuildContext context) {
-
     final Color color = Utils(context).color;
+    double userPrice = isOnSale ? salePrice : price;
 
     return FittedBox(
       child: Row(
         children: [
-          const TextWidget(text: "1.59\$", color: Colors.green, fontSize: 22),
+          TextWidget(
+              text:
+                  '\$${(userPrice * int.parse(textPrice)).toStringAsFixed(2)}',
+              color: Colors.green,
+              fontSize: 18),
           const SizedBox(
             width: 5,
           ),
-          Text(
-            "2.59\$",
-            style: TextStyle(
-                fontSize: 15,
-                color: color,
-                decoration: TextDecoration.lineThrough),
+          Visibility(
+            visible: isOnSale ? true : false,
+            child: Text(
+              "\$${(price * int.parse(textPrice)).toStringAsFixed(2)}",
+              style: TextStyle(
+                  fontSize: 15,
+                  color: color,
+                  decoration: TextDecoration.lineThrough),
+            ),
           ),
         ],
       ),

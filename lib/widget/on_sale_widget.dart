@@ -17,7 +17,6 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
   @override
   Widget build(BuildContext context) {
     final color = Utils(context).color;
-    final theme = Utils(context).getTheme;
     Size size = Utils(context).getScreenSize;
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -72,7 +71,12 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                     )
                   ],
                 ),
-                const PriceWidget(),
+                PriceWidget(
+                  price: 15.1,
+                  salePrice: 3,
+                  textPrice: '1',
+                  isOnSale: true,
+                ),
                 const SizedBox(
                   height: 5,
                 ),

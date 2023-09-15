@@ -26,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final Utils utils = Utils(context);
-    final themeState = Provider.of<DarkThemeProvider>(context);
     final Color color = Utils(context).color;
     Size screenSize = utils.getScreenSize;
     return Scaffold(
@@ -134,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
+              padding: EdgeInsets.zero,
               childAspectRatio: screenSize.width / (screenSize.height * 0.55),
               children: List.generate(4, (index) => FeedsWidget() ),
             )

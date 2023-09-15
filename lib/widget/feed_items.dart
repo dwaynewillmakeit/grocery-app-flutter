@@ -71,11 +71,20 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    PriceWidget(),
+                    Flexible(
+                      flex:4,
+                      child: PriceWidget(
+                        price: 15.1,
+                        salePrice: 3,
+                        textPrice: _quantityTextController.text,
+                        isOnSale: true,
+                      ),
+                    ),
                     SizedBox(
                       width: 8,
                     ),
                     Flexible(
+                      flex: 2,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -92,6 +101,11 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                           Flexible(
                               child: TextFormField(
                             controller: _quantityTextController,
+                            onChanged: (value){
+                              setState(() {
+
+                              });
+                            },
                             key: const ValueKey('10'),
                             style: TextStyle(
                               color: color,
