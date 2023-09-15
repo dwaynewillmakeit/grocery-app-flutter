@@ -1,12 +1,12 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:grocery_flutter_app/provider/dark_theme_provider.dart';
+import 'package:grocery_flutter_app/inner_screen/on_sale_screen.dart';
+import 'package:grocery_flutter_app/sevices/global_methods.dart';
 import 'package:grocery_flutter_app/sevices/utils.dart';
 import 'package:grocery_flutter_app/widget/feed_items.dart';
 import 'package:grocery_flutter_app/widget/on_sale_widget.dart';
 import 'package:grocery_flutter_app/widget/text_widget.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,8 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final Utils utils = Utils(context);
+
     final Color color = Utils(context).color;
+
     Size screenSize = utils.getScreenSize;
+
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -54,7 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 6,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                GlobalMethods.navigateTo(
+                    context: context, routeName: OnSaleScreen.routeName);
+              },
               child: const TextWidget(
                 text: "View All",
                 maxLines: 1,
@@ -135,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisCount: 2,
               padding: EdgeInsets.zero,
               childAspectRatio: screenSize.width / (screenSize.height * 0.55),
-              children: List.generate(4, (index) => FeedsWidget() ),
+              children: List.generate(4, (index) => FeedsWidget()),
             )
           ],
         ),
