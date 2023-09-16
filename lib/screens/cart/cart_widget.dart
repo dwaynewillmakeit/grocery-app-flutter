@@ -2,6 +2,8 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:grocery_flutter_app/inner_screen/product_details.dart';
+import 'package:grocery_flutter_app/sevices/global_methods.dart';
 import 'package:grocery_flutter_app/sevices/utils.dart';
 import 'package:grocery_flutter_app/widget/heat_button.dart';
 import 'package:grocery_flutter_app/widget/text_widget.dart';
@@ -44,17 +46,24 @@ class _CartWidgetState extends State<CartWidget> {
                   borderRadius: BorderRadius.circular(12)),
               child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      height: size.width * 0.25,
-                      width: size.width * 0.25,
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                      child: FancyShimmerImage(
-                        imageUrl:
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCuqKf8ZLSaQt148BORZSRLa6Dcdw8UJviuQeJOGLctJsxDJArrO899FEAIkQWAqkLR6M&usqp=CAU',
-                        boxFit: BoxFit.fill,
+                  InkWell(
+                    onTap: () {
+                      GlobalMethods.navigateTo(
+                          context: context,
+                          routeName: ProductDetailsScreen.routeName);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        height: size.width * 0.25,
+                        width: size.width * 0.25,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12)),
+                        child: FancyShimmerImage(
+                          imageUrl:
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCuqKf8ZLSaQt148BORZSRLa6Dcdw8UJviuQeJOGLctJsxDJArrO899FEAIkQWAqkLR6M&usqp=CAU',
+                          boxFit: BoxFit.fill,
+                        ),
                       ),
                     ),
                   ),
@@ -121,13 +130,22 @@ class _CartWidgetState extends State<CartWidget> {
                             size: 20,
                           ),
                         ),
-                        const SizedBox(height: 5,),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         HeartButton(),
-                        TextWidget(text: "\$0.39", color: color, fontSize: 18,maxLines: 1,)
+                        TextWidget(
+                          text: "\$0.39",
+                          color: color,
+                          fontSize: 18,
+                          maxLines: 1,
+                        )
                       ],
                     ),
                   ),
-                  SizedBox(width: 5,)
+                  SizedBox(
+                    width: 5,
+                  )
                 ],
               ),
             ),
@@ -153,7 +171,11 @@ class _CartWidgetState extends State<CartWidget> {
             borderRadius: BorderRadius.circular(12),
             child: Padding(
               padding: const EdgeInsets.all(6.0),
-              child: Icon(icon, color: Colors.white,size: 20,),
+              child: Icon(
+                icon,
+                color: Colors.white,
+                size: 20,
+              ),
             ),
           ),
         ),

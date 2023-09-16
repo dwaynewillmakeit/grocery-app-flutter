@@ -1,6 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:grocery_flutter_app/inner_screen/product_details.dart';
+import 'package:grocery_flutter_app/sevices/global_methods.dart';
 import 'package:grocery_flutter_app/sevices/utils.dart';
 import 'package:grocery_flutter_app/widget/heat_button.dart';
 import 'package:grocery_flutter_app/widget/price_widget.dart';
@@ -39,7 +41,10 @@ class _FeedsWidgetState extends State<FeedsWidget> {
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            GlobalMethods.navigateTo(
+                context: context, routeName: ProductDetailsScreen.routeName);
+          },
           borderRadius: BorderRadius.circular(12),
           child: Column(
             children: [
@@ -72,7 +77,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Flexible(
-                      flex:4,
+                      flex: 4,
                       child: PriceWidget(
                         price: 15.1,
                         salePrice: 3,
@@ -101,10 +106,8 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                           Flexible(
                               child: TextFormField(
                             controller: _quantityTextController,
-                            onChanged: (value){
-                              setState(() {
-
-                              });
+                            onChanged: (value) {
+                              setState(() {});
                             },
                             key: const ValueKey('10'),
                             style: TextStyle(

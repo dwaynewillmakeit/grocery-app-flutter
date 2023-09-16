@@ -1,6 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:grocery_flutter_app/inner_screen/product_details.dart';
+import 'package:grocery_flutter_app/sevices/global_methods.dart';
 import 'package:grocery_flutter_app/sevices/utils.dart';
 import 'package:grocery_flutter_app/widget/heat_button.dart';
 import 'package:grocery_flutter_app/widget/price_widget.dart';
@@ -25,7 +27,7 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
         color: Theme.of(context).cardColor.withOpacity(0.9),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
-          onTap: () {},
+          onTap: () {GlobalMethods.navigateTo(context: context, routeName: ProductDetailsScreen.routeName);},
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
