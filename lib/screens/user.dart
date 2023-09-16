@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:grocery_flutter_app/provider/dark_theme_provider.dart';
 import 'package:grocery_flutter_app/screens/orders/orders_screen.dart';
+import 'package:grocery_flutter_app/screens/viewed_recently/viewed_recently.dart';
 import 'package:grocery_flutter_app/screens/wishlist/wishlist_screen.dart';
 import 'package:grocery_flutter_app/sevices/global_methods.dart';
 import 'package:provider/provider.dart';
@@ -99,7 +100,7 @@ class _UserScreenState extends State<UserScreen> {
                   color: color,
                   onPressed: () {
                     GlobalMethods.navigateTo(
-                        context: context, routeName: WishlistScreen.routeName);
+                        context: context, routeName: ViewedRecentlyScreen.routeName);
                   }),
               _listTiles(
                   title: "Forget Password",
