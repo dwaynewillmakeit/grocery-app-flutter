@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:grocery_flutter_app/screens/wishlist/wishlist_widget.dart';
+import 'package:grocery_flutter_app/sevices/global_methods.dart';
 import 'package:grocery_flutter_app/sevices/utils.dart';
 import 'package:grocery_flutter_app/widget/back_widget.dart';
 import 'package:grocery_flutter_app/widget/text_widget.dart';
@@ -30,7 +31,12 @@ class WishlistScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              GlobalMethods.showWarningDialog(title: "Empty you wishlist?",
+                  subTitle: "Are you sure?",
+                  action: () {},
+                  context: context);
+            },
             icon: const Icon(IconlyBroken.delete),
             color: color,
           )

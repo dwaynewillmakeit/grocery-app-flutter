@@ -86,7 +86,10 @@ class _UserScreenState extends State<UserScreen> {
                   title: "Wishlist",
                   iconData: IconlyLight.heart,
                   color: color,
-                  onPressed: () {GlobalMethods.navigateTo(context: context, routeName: WishlistScreen.routeName);}),
+                  onPressed: () {
+                    GlobalMethods.navigateTo(
+                        context: context, routeName: WishlistScreen.routeName);
+                  }),
               _listTiles(
                   title: "Forget Password",
                   iconData: IconlyLight.unlock,
@@ -112,57 +115,17 @@ class _UserScreenState extends State<UserScreen> {
                   iconData: IconlyLight.logout,
                   color: color,
                   onPressed: () {
-                    _showLogoutDialog();
+                    GlobalMethods.showWarningDialog(
+                        title: "Sign Out",
+                        subTitle: "Are you sure you want to sign out? ",
+                        action: () {},
+                        context: context);
                   }),
             ],
           ),
         ),
       ),
     ));
-  }
-
-  Future<void> _showLogoutDialog() async {
-    await showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Row(
-              children: [
-                Image.asset(
-                  'assets/images/warning-sign.png',
-                  height: 20,
-                  width: 20,
-                  fit: BoxFit.fill,
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text("Sign out")
-              ],
-            ),
-            content: const Text("Do you want to sign out?"),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    if (Navigator.canPop(context)) {
-                      Navigator.pop(context);
-                    }
-                  },
-                  child: TextWidget(
-                    color: Colors.cyan,
-                    text: "Cancel",
-                    fontSize: 18,
-                  )),
-              TextButton(
-                  onPressed: () {},
-                  child: TextWidget(
-                    color: Colors.red,
-                    text: "OK",
-                    fontSize: 18,
-                  ))
-            ],
-          );
-        });
   }
 
   Future<void> _showAddressDialog() async {
