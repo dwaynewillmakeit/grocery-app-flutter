@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:grocery_flutter_app/provider/dark_theme_provider.dart';
+import 'package:grocery_flutter_app/screens/orders/orders_screen.dart';
 import 'package:grocery_flutter_app/screens/wishlist/wishlist_screen.dart';
 import 'package:grocery_flutter_app/sevices/global_methods.dart';
 import 'package:provider/provider.dart';
@@ -81,10 +82,20 @@ class _UserScreenState extends State<UserScreen> {
                   title: "Orders",
                   iconData: IconlyLight.bag,
                   color: color,
-                  onPressed: () {}),
+                  onPressed: () {
+                    GlobalMethods.navigateTo(context: context, routeName: OrdersScreen.routeName);
+                  }),
               _listTiles(
                   title: "Wishlist",
                   iconData: IconlyLight.heart,
+                  color: color,
+                  onPressed: () {
+                    GlobalMethods.navigateTo(
+                        context: context, routeName: WishlistScreen.routeName);
+                  }),
+              _listTiles(
+                  title: "Viewed",
+                  iconData: Icons.remove_red_eye_outlined,
                   color: color,
                   onPressed: () {
                     GlobalMethods.navigateTo(
