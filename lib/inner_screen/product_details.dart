@@ -17,7 +17,7 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  final _quantityTextController = TextEditingController();
+  final _quantityTextController = TextEditingController(text: "1");
 
   @override
   void dispose() {
@@ -136,7 +136,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         _quantityControllerWidget(
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                if(_quantityTextController.text =='1'){
+                                  return;
+                                }
+                                _quantityTextController.text = (int.parse(
+                                    _quantityTextController.text) -
+                                    1)
+                                    .toString();
+                              });
+                            },
                             icon: CupertinoIcons.minus,
                             color: Colors.red),
                         Flexible(
@@ -144,7 +154,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             child: TextField(
                               controller: _quantityTextController,
                               onChanged: (value) {
-                                setState(() {});
+                                setState(() {
+                                  if (value.isEmpty) {
+                                    _quantityTextController.text = "1";
+                                  } else {
+                                    return;
+                                  }
+                                });
                               },
                               keyboardType: TextInputType.number,
                               inputFormatters: [
@@ -153,7 +169,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               textAlign: TextAlign.center,
                             )),
                         _quantityControllerWidget(
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+
+                                _quantityTextController.text = (int.parse(
+                                    _quantityTextController.text) +
+                                    1)
+                                    .toString();
+                              });
+                            },
                             icon: CupertinoIcons.plus,
                             color: Colors.green),
                       ],
@@ -180,16 +204,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               const SizedBox(
                                 height: 5,
                               ),
-                               const Row(
+                                Row(
 
                                 children: [
-                                  TextWidget(
+                                  const TextWidget(
                                     text: "\$2.59/",
                                     color: Colors.black,
                                     fontSize: 20,
                                   ),
                                   TextWidget(
-                                    text: "Kg",
+                                    text: "${_quantityTextController.text}Kg",
                                     color: Colors.black,
                                     fontSize: 18,
                                   ),
